@@ -37,13 +37,13 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
 
     if len(artist) > 8 and hjson[0]['artist_unicode'] is not None:
         if artist == artist2:
-            if len(artist) >= 21:
-                artist = artist[:21] + '...'
+            if len(artist) >= 14:
+                artist = artist[:14] + '...'
         else:
             artist = artist[:8] + '...'
     else:
-        if len(artist) >= 21:
-            artist = artist[:21] + '...'
+        if len(artist) >= 14:
+            artist = artist[:14] + '...'
 
     output = artist + ' - ' + title
     diffname = hjson[0]['version']
