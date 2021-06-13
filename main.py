@@ -14,7 +14,15 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
     url = 'https://osu.ppy.sh/api/get_beatmaps?k=' + apikey + '&b=' + beatmaps_id
     r = requests.get(url)
     hjson = json.loads(r.text)
-    title = hjson[0]['artist_unicode'] + ' - ' + hjson[0]['title_unicode']
+    if hjson[0]['artist_unicode'] is None:
+        title = hjson[0]['artist']
+    else:
+        title = hjson[0]['artist_unicode']
+    if hjson[0]['title_unicode'] is None:
+        title = title + ' - ' + hjson[0]['title']
+    else:
+        title = title + ' - ' + hjson[0]['title_unicode']
+
     diffname = hjson[0]['version']
     beatmapset_id = hjson[0]['beatmapset_id']
     loadimage(beatmapset_id, title, diffname, pool, name)
