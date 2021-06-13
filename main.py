@@ -15,17 +15,40 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
     r = requests.get(url)
     hjson = json.loads(r.text)
     if hjson[0]['artist_unicode'] is None:
-        title = hjson[0]['artist']
+        artist = hjson[0]['artist']
     else:
-        title = hjson[0]['artist_unicode']
+        artist = hjson[0]['artist_unicode']
+        artist2 = hjson[0]['artist']
     if hjson[0]['title_unicode'] is None:
-        title = title + ' - ' + hjson[0]['title']
+        title = hjson[0]['title']
     else:
-        title = title + ' - ' + hjson[0]['title_unicode']
+        title = hjson[0]['title_unicode']
+        title2 = hjson[0]['title']
 
+    if len(title) > 12 and hjson[0]['title_unicode'] is not None:
+        if title == title2:
+            if len(title) >= 22:
+                title = title[:22] + '...'
+        else:
+            title = title[:12] + '...'
+    else:
+        if len(title) >= 22:
+            title = title[:22] + '...'
+
+    if len(artist) > 8 and hjson[0]['artist_unicode'] is not None:
+        if artist == artist2:
+            if len(artist) >= 21:
+                artist = artist[:21] + '...'
+        else:
+            artist = artist[:8] + '...'
+    else:
+        if len(artist) >= 21:
+            artist = artist[:21] + '...'
+
+    output = artist + ' - ' + title
     diffname = hjson[0]['version']
     beatmapset_id = hjson[0]['beatmapset_id']
-    loadimage(beatmapset_id, title, diffname, pool, name)
+    loadimage(beatmapset_id, output, diffname, pool, name)
 
 
 # 从ppy api中下载封面图到本地。
