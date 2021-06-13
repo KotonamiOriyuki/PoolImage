@@ -42,5 +42,5 @@ Last Update : 2021/6/13 16:35
 考虑接入 CQHttp 实现在线生成图片...
 
 ## 更新纪录
-6.13 添加是否存在 title_unicode 和 artist_unicode 的判断，防止 json 值返回为 Null 时出错。
+6.13 添加是否存在 title_unicode 和 artist_unicode 的判断，防止 json 值返回为 Null 时出错。\
 6.14 添加了长度限制。
