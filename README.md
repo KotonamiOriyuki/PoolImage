@@ -2,7 +2,8 @@
 
 在开始前，请使用 PyCharm 编辑 main.py 中的 key 和 path 方可正常运作。\
 Key - osu!API key，您可以通过 https://osu.ppy.sh/p/api 申请一个。\
-其次，您需要下载 ImageMagick，安装时**请勾选 Install development headers and libraries for C and C++。**
+其次，您需要下载 ImageMagick(Windows的在最下方)，安装时**请勾选 Install development headers and libraries for C and C++。**\
+下载地址:https://imagemagick.org/script/download.php
 
 如果程序缺少库，请依次检查下列库:
 `requests
