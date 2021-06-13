@@ -28,7 +28,7 @@ Wand`\
 添加 EX.png 后，您可以在 list.txt 中写入 EX 类型图，生成图片将会出现对应效果。
 
 生成的图片将会保存至 /export/\
-效果图(已经保存至 /export/):
+效果图(已经保存至 /export/):\
 ![0.png](https://i.loli.net/2021/06/13/jplg35WEzOLM4Ad.png)
 
 编译环境:Windows 10 , anaconda3(python 3.8) , PyCharm 社区版\
