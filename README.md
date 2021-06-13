@@ -1,3 +1,5 @@
+Pool Image
+****
 这是一个可以自动通过 osu! 导出bid所对应bg并生成难度名，谱面信息的工具，可用于大部分 osu! 比赛的 showcase 。
 
 在开始前，请使用 PyCharm 编辑 main.py 中的 key 和 path 方可正常运作。\
@@ -35,3 +37,6 @@ Wand`\
 编译环境:Windows 10 , anaconda3(python 3.8) , PyCharm 社区版\
 鸣谢:Zh_Jk 对本代码的部分援助。\
 Last Update : 2021/6/13 16:35
+****
+更新纪录
+6.13 添加是否存在 title_unicode 和 artist_unicode 的判断，防止 json 值返回为 Null 时出错。
