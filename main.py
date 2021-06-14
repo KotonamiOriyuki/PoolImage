@@ -14,18 +14,22 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
     url = 'https://osu.ppy.sh/api/get_beatmaps?k=' + apikey + '&b=' + beatmaps_id
     r = requests.get(url)
     hjson = json.loads(r.text)
-    if hjson[0]['artist_unicode'] is None:
-        artist = hjson[0]['artist']
-    else:
-        artist = hjson[0]['artist_unicode']
-        artist2 = hjson[0]['artist']
-    if hjson[0]['title_unicode'] is None:
-        title = hjson[0]['title']
-    else:
-        title = hjson[0]['title_unicode']
-        title2 = hjson[0]['title']
+    artist = hjson[0]['artist_unicode']
+    title = hjson[0]['title_unicode']
+    artist2 = hjson[0]['artist']
+    title2 = hjson[0]['title']
 
-    if len(title) > 12 and hjson[0]['title_unicode'] is not None:
+    try:
+        len(artist)
+    except:
+        artist = hjson[0]['artist']
+
+    try:
+        len(title)
+    except:
+        title = hjson[0]['title']
+
+    if hjson[0]['title_unicode'] is not None and len(title) > 12:
         if title == title2:
             if len(title) >= 22:
                 title = title[:22] + '...'
@@ -35,7 +39,7 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
         if len(title) >= 22:
             title = title[:22] + '...'
 
-    if len(artist) > 8 and hjson[0]['artist_unicode'] is not None:
+    if hjson[0]['artist_unicode'] is not None and len(artist) > 8:
         if artist == artist2:
             if len(artist) >= 14:
                 artist = artist[:14] + '...'
@@ -49,6 +53,7 @@ def ppyrequest(apikey: str, beatmaps_id: str, pool: str, name: str):
     diffname = hjson[0]['version']
     beatmapset_id = hjson[0]['beatmapset_id']
     loadimage(beatmapset_id, output, diffname, pool, name)
+
 
 
 # 从ppy api中下载封面图到本地。
